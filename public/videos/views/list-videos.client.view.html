@@ -1,0 +1,16 @@
+<section data-ng-controller="VideosController" data-ng-init="find()">
+	<h1>Videos</h1>
+	<ul>
+		<!-- duplicates the list item for every video in the collection and displays using ng-bind -->
+		<li data-ng-repeat="video in videos">
+			<a data-ng-href="/videos/{{video._id}}" data-ng-bind="video.title"></a>
+			<br>
+			<p>Model: <span data-ng-bind="video.creatorName"></span></p>
+			<small data-ng-bind="video.created | date:'medium"></small>
+			<small data-ng-bind="video.type"></small>
+		</li>
+	</ul>
+	<div data-ng-hide="!videos || videos.length">
+		No videos yet, why don't you <a href="/videos/create">upload</a> one?
+	</div>
+</section>

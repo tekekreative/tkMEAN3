@@ -1,0 +1,27 @@
+<section data-ng-controller = "VideosController" data-ng-init="findOne()">
+	<h1>Edit Video</h1>
+	<form data-ng-submit="update()">
+		<div>
+			<label for="title">Title</label>
+			<div>
+				<input type="text" data-ng-model="video.title" id="title" placeholder="Title" required>
+			</div>
+		</div>
+		<div>
+			<label for="type">Type</label>
+			<div>
+				<select data-ng-model="type" id="type">
+					<option value="BoyGirl">Boy/Girl</option>
+					<option value="GirlGirl">Girl/Girl</option>
+					<option value="Solo">Solo</option>
+				</select>
+			</div>
+		</div>
+		<div>
+			<input type="submit" value="Update">
+		</div>
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</section>

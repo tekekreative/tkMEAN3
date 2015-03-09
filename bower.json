@@ -1,0 +1,11 @@
+{
+  "name": "tkMEAN",
+  "version": "3.0.7",
+  "dependencies": {
+    "angular": "~1.2",
+    "angular-route": "~1.2",
+    "angular-resource": "~1.2",
+    "bootstrap-sass": "~3.3.3",
+    "angular-mocks": "~1.2"
+  }
+}

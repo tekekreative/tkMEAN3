@@ -1,0 +1,20 @@
+<section ng-controller="ExampleController">
+	<!-- Shown when user's not signed in -->
+	<div data-ng-show="!authentication.user">
+		<a href="/signup" target="_self">Signup</a>
+		<a href="/signin" target="_self">Signin</a>
+	</div>
+	<!-- Shows when user's signed in -->
+	<div data-ng-show="authentication.user">
+		<h1>Bonjour <span data-ng-bind="authentication.user.fullName"></span></h1>
+		<a href="/signout">Sign out</a>
+		<ul>
+			<li>
+				<a href="/#!/videos">List videos</a>
+			</li>
+			<li>
+				<a href="/#!/videos/create">Upload video</a>
+			</li>
+		</ul>
+	</div>
+</section>

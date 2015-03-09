@@ -1,0 +1,36 @@
+<section data-ng-controller = "VideosController">
+	<h1>New Video</h1>
+	<form data-ng-submit="create()" novalidate>
+		<div>
+			<label for="title">Title</label>
+			<div>
+				<input type="text" data-ng-model="title" id="title" placeholder="Title" required>
+			</div>
+		</div>
+		<div>
+			<label for="type">Type</label>
+			<div>
+				<select data-ng-model="type" id="type">
+					<option value="BoyGirl">Boy/Girl</option>
+					<option value="GirlGirl">Girl/Girl</option>
+					<option value="Solo">Solo</option>
+				</select>
+			</div>
+		</div>
+		<div data-ng-init="loadOptions()">
+			<label for="creator">Creator</label>
+			<div>
+				<select data-ng-model="creatorName" id="creatorName">
+					<option value="{{girl.name}}" ng-repeat="girl in girls">{{girl.name}}</option>
+				</select>
+				<p>
+			</div>
+		</div>
+		<div>
+			<input type="submit">
+		</div>
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</section>

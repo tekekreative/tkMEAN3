@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org">
+	<head>
+		<title>
+			<%= title %>
+		</title>
+	</head>
+	<body>
+		<section ng-view></section>
+
+		<script type="text/javascript">
+			window.user = <%- user || 'null' %>;
+			var mql = window.matchMedia("(min-width: 600px)");
+			mql.addListener(handleMQ);
+			function handleMQ(mql) {
+				if (mql.matches) {
+					console.log('at least 600');
+				} else {
+					console.log('below 400');
+				}
+			}
+		</script>
+		<script type="text/javascript" src="/lib/angular/angular.js"></script>
+		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+		<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+
+		<script type="text/javascript" src="/girls/girls.client.module.js"></script>
+		<script type="text/javascript" src="/girls/services/girls.client.services.js"></script>
+		<script type="text/javascript" src="/girls/controllers/girls.client.controller.js"></script>
+
+		<script type="text/javascript" src="/videos/videos.client.module.js"></script>
+		<script type="text/javascript" src="/videos/services/videos.client.services.js"></script>
+		<script type="text/javascript" src="/videos/controllers/videos.client.controller.js"></script>
+
+		<script type="text/javascript" src="/videos/config/videos.client.routes.js"></script>
+
+		<script type="text/javascript" src="/users/users.client.module.js"></script>
+		<script type="text/javascript" src="/users/services/authentication.client.services.js"></script>
+		<script type="text/javascript" src="/example/example.client.module.js"></script>
+		<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
+		<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+
+		<!--Bootstrap AngularJS Application -->
+		<script type="text/javascript" src="/application.js"></script>
+	</body>
+</html>

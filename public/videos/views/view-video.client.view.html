@@ -1,0 +1,19 @@
+<!--Since you need to load the video info, the view uses
+	ng-init directive to call the findOne() method when the view is loaded -->
+<section data-ng-controller="VideosController" data-ng-init="findOne()">
+	<h1 data-ng-bind="video.title"></h1>
+	<!-- the ng-show is used to present the edit/delete btn only to the uploader of the video -->
+	<div >
+		<a href="/#!/videos/{{video._id}}/edit">edit</a>
+		<a href="#" data-ng-click="delete();">delete</a>
+	</div>
+	<p>Model: <span data-ng-bind="video.creator"></span></p>
+	<small>
+		<em>Uploaded by</em>
+		<em data-ng-bind="video.created | date:'mediumDate'"></em>
+		<em>by</em>
+		<em data-ng-bind="video.uploader"></em>
+	</small>
+	<h5>Type</h5>
+	<p data-ng-bind="video.type"></p>
+</section>
