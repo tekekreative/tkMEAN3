@@ -11,10 +11,12 @@ var config = require('./config'),
 	methodOverride = require('method-override'),
 	session = require('express-session'),
 	flash = require('connect-flash'),
-	passport = require('passport');
+	passport = require('passport'),
+	redisStore = require('connect-redis')(session);
 
 module.exports = function() {
 	var app = express();
+	var sessionStore = new redisStore();
 	if (process.env.NODE_ENV === 'development') {
 		app.use(morgan('dev'));
 	} else if (process.env.NODE_ENV === 'production') {
@@ -32,7 +34,8 @@ module.exports = function() {
 		// where you define the secret property
 		// can get or set any property that you 
 		// wich to use in the current session
-		secret: config.sessionSecret
+		secret: config.sessionSecret,
+		store: sessionStore
 	}));
 	app.set('views', './app/views');
 	app.set('view engine', 'ejs');
