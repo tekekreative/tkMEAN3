@@ -8,6 +8,9 @@ module.exports = function(grunt) {
 		env: {
 			dev: {
 				NODE_ENV: 'development'
+			},
+			prod: {
+				NODE_ENV: 'production'
 			}
 		},
 		// created a dev env config
@@ -55,6 +58,6 @@ module.exports = function(grunt) {
 	// first argument's the task name
 	// second is collection of other tasks that's
 	// executed when parent task is used
-	grunt.registerTask('default', ['env:dev', 'nodemon']);
+	grunt.registerTask('default', ['env:prod', 'nodemon']);
 	grunt.registerTask('lint', ['jshint' ]);
 };
