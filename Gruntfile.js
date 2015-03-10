@@ -58,6 +58,8 @@ module.exports = function(grunt) {
 	// first argument's the task name
 	// second is collection of other tasks that's
 	// executed when parent task is used
-	grunt.registerTask('default', ['env:prod', 'nodemon']);
+	grunt.registerTask('default', ['env:dev', 'nodemon']);
 	grunt.registerTask('lint', ['jshint' ]);
+	grunt.registerTask('prod', ['env:prod' ]);
+
 };

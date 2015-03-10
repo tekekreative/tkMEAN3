@@ -9,14 +9,14 @@ var config = require('./config'),
 	compress = require('compression'),
 	bodyParser = require('body-parser'),
 	methodOverride = require('method-override'),
+	cookieParser = require('cookie-parser'),
 	session = require('express-session'),
 	flash = require('connect-flash'),
 	passport = require('passport'),
-	redisStore = require('connect-redis')(session);
+	mongoStore = require('connect-mongo')(session);
 
 module.exports = function() {
 	var app = express();
-	var sessionStore = new redisStore();
 	if (process.env.NODE_ENV === 'development') {
 		app.use(morgan('dev'));
 	} else if (process.env.NODE_ENV === 'production') {
@@ -28,14 +28,17 @@ module.exports = function() {
 	}));
 	app.use(bodyParser.json());
 	app.use(methodOverride());
+	app.use(cookieParser());
 	app.use(session({
 		saveUninitialized: true,
 		resave: true,
 		// where you define the secret property
 		// can get or set any property that you 
 		// wich to use in the current session
-		secret: config.sessionSecret,
-		store: sessionStore
+		store: new mongoStore({
+			url: config.db
+		}),
+		secret: config.sessionSecret
 	}));
 	app.set('views', './app/views');
 	app.set('view engine', 'ejs');
