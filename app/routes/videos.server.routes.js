@@ -1,14 +1,18 @@
 'use strict';
 
 var users = require('../../app/controllers/users.server.controller'),
-	videos = require('../../app/controllers/videos.server.controller');
+	videos = require('../../app/controllers/videos.server.controller'),
+	index = require('../../app/controllers/index.server.controller');
 
 module.exports = function(app) {
+	app.route('/videos')
+		.get(index.render);
+
 	app.route('/api/videos')
 		.get(videos.list)
 		// middleware requiresLogin to make sure
 		// user is logged in
-		.post(users.requiresLogin, videos.create);
+		.post(videos.create);
 
 	app.route('/api/videos/:videoId')
 		.get(videos.read)

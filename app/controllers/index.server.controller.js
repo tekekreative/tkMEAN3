@@ -4,8 +4,6 @@ exports.render = function(req, res) {
 	// controller checks whether lastVisit property
 	// was set in the session object and if so,
 	// outputs the last visit date.
-	console.log(req);
-	console.log(req.session);	
 	if (req.session.lastVisit) {
 		console.log("Last session was at" + req.session.lastVisit);
 	}

@@ -1,5 +1,6 @@
 'use strict';
 var mongoose = require('mongoose'),
+	multiparty = require('multiparty'),
 	Video = mongoose.model('Video'),
 	Model = mongoose.model('Model');
 
@@ -20,8 +21,14 @@ var getErrorMessage = function(err) {
 
 exports.create = function(req, res) {
 	var video = new Video(req.body);
+	var form = new multiparty.Form({
+		"autoFiles" : true,
+		"autoFields": true,
+		"uploadDir": "./uploads"
+	});
 	//added the authenticated pssport user as the video uploader
 	video.uploader = req.user;
+	form.parse(req);
 
 	// used the save() method to save the article document
 	video.save(function(err) {

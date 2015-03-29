@@ -15,7 +15,7 @@ app.listen(process.env.PORT || 3000);
 
 module.exports = app;
 
-console.log(process.env.NODE_ENV);
+console.log("You're on " + process.env.NODE_ENV);
 
 // Connected all the loose ends by requiring the Express config module
 // and then using it to retrieve your application object instance

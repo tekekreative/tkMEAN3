@@ -13,6 +13,7 @@ var config = require('./config'),
 	session = require('express-session'),
 	flash = require('connect-flash'),
 	passport = require('passport'),
+	multiparty = require('multiparty'),
 	mongoStore = require('connect-mongo')(session);
 
 module.exports = function() {

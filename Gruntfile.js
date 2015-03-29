@@ -60,6 +60,6 @@ module.exports = function(grunt) {
 	// executed when parent task is used
 	grunt.registerTask('default', ['env:dev', 'nodemon']);
 	grunt.registerTask('lint', ['jshint' ]);
-	grunt.registerTask('prod', ['env:prod' ]);
+	//grunt.registerTask('prod', ['env:prod' ]);
 
 };

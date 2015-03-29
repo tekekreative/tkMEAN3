@@ -1,1 +1,51 @@
-@import "../lib/bootstrap-sass/assets/stylesheets/bootstrap"
+@import "../lib/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.view-container {
+	position: relative;
+}
+
+.view-frame {
+	&.ng-enter, &.ng-leave {
+		background: white;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	&.ng-enter {
+		@include animation(2s fade-in);
+		z-index: 100;
+	}
+	&.ng-leave {
+		@include animation(2s fade-out);
+	}
+}
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@-webkit-keyframes fade-out {
+  from {
+    opacity: 1; }
+
+  to {
+    opacity: 0; } }

@@ -1,8 +1,8 @@
-<section data-ng-controller="VideosController" data-ng-init="find()">
+<section ng-controller="VideosController" data-ng-init="find()" class="row">
 	<h1>Videos</h1>
 	<ul>
 		<!-- duplicates the list item for every video in the collection and displays using ng-bind -->
-		<li data-ng-repeat="video in videos">
+		<li class="col-xs-12 col-sm-3" data-ng-repeat="video in videos">
 			<a data-ng-href="/videos/{{video._id}}" data-ng-bind="video.title"></a>
 			<br>
 			<p>Model: <span data-ng-bind="video.creatorName"></span></p>

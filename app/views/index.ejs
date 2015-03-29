@@ -4,10 +4,12 @@
 		<title>
 			<%= title %>
 		</title>
+		<base href="/">
+	<link href="/css/app.css" rel="stylesheet">	
 	</head>
-	<body>
-		<section ng-view></section>
-
+	<body class="view-container">
+		<section ng-view class="view-frame container" ></section>
+<!-- 		<iframe src="https://drive.google.com/file/d/0B6r0C1lNM39ER2tqYUp6a2hHY0E/preview" width="640" height="480"></iframe> -->
 		<script type="text/javascript">
 			window.user = <%- user || 'null' %>;
 			var mql = window.matchMedia("(min-width: 600px)");
@@ -23,7 +25,10 @@
 		<script type="text/javascript" src="/lib/angular/angular.js"></script>
 		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
 		<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
-
+		<script type="text/javascript" src="/lib/angular-animate/angular-animate.js"></script>
+		<script type="text/javascript" src="/lib/ng-file-upload/angular-file-upload.min.js"></script>
+		<script type="text/javascript" src="/directives/videos.client.directives.js"></script>		
+		<script type="text/javascript" src="/animations/global.client.animations.js"></script>
 		<script type="text/javascript" src="/girls/girls.client.module.js"></script>
 		<script type="text/javascript" src="/girls/services/girls.client.services.js"></script>
 		<script type="text/javascript" src="/girls/controllers/girls.client.controller.js"></script>

@@ -3,7 +3,7 @@ var mainApplicationModuleName = 'tekeME';
 
 // create the main application module
 // added the example module
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource', 'ngRoute', 'users', 'example', 'girls', 'videos']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource', 'ngRoute', 'ngAnimate', 'angularFileUpload', 'fileUpload', 'tekeMeanAnimations', 'users', 'example', 'girls', 'videos']);
 
 mainApplicationModule.config(['$locationProvider',
 	function($locationProvider) {

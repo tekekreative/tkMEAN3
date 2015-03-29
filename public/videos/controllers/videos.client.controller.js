@@ -7,7 +7,7 @@
 // Authentication - you created and provides with authenticated user info
 // Videos - provides you with set mof methods to communicate w/ RESTful
 // endpoints
-angular.module('videos').controller('VideosController', ['$scope', '$routeParams', '$location', 'Authentication', 'Girls', 'Videos', function($scope, $routeParams, $location, Authentication, Girls, Videos) {
+angular.module('videos').controller('VideosController', ['$scope', '$routeParams', '$location', '$upload', 'Authentication', 'Girls', 'Videos', function($scope, $routeParams, $location, $upload, Authentication, Girls, Videos) {
 		// Auth binded to scope so the views will be able to use it as 
 		// well
 		$scope.authentication = Authentication;
@@ -19,6 +19,29 @@ angular.module('videos').controller('VideosController', ['$scope', '$routeParams
 				type: this.type,
 				creatorName: this.creatorName
 			});
+			$scope.$watch('filePath', function() {
+				$scope.upload($scope.filePath);
+			});
+			$scope.upload = function(filePath){
+
+				if (filePath.length) {
+					$upload.upload({
+						url: '/api/videos/',
+						file: filePath,
+						method: 'POST',
+						headers: {
+							'Content-Type': 'multipart/form-data'
+						},
+						data: data
+					}).progress(function(e) {
+						console.log(e);
+					}).success(function(data, status, headers, config) {
+						console.log('complete');
+					});
+
+				}
+				
+			};
 			// used save method to send the new video object to
 			// corresponding RESTful endpoint, along w/ two callbacks
 			// first is when successful. it uses the location service
